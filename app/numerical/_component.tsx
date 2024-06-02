@@ -18,6 +18,7 @@ import GetFn from "./_hook";
 import { useState } from "react";
 import TableData, { DataShow } from "./_table";
 import toast from "react-hot-toast";
+import Link from "next/link";
 
 const formSchema = z.object({
   Function: z.string().min(1, {
@@ -75,12 +76,13 @@ export function ProfileForm() {
   }
   return (
     <Form {...form}>
+      <Link href="/home">Back Home</Link>
       <h1 className="text-center text-3xl font-bold tracking-[3px] gradient">
         False Method
       </h1>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-8 max-w-3xl mx-auto p-5 bg-gray-50 rounded-xl shadow-xl"
+        className="space-y-8  p-5 bg-gray-50 rounded-xl shadow-xl"
       >
         {Object.entries(form.getValues()).map(([key, value]) => {
           return (
@@ -91,9 +93,8 @@ export function ProfileForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>
-                    Value of{" "}
+                    Value of
                     <span className="gradient font-bold tracking-[1px]">
-                      {" "}
                       {String(field.name).toUpperCase()}
                     </span>
                   </FormLabel>
